@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+        color: #f84364;
+        margin-bottom: 40px;
+      }
+      #container{
+        width: 70%;
+        margin: auto;
+        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3, 150px);
+        gap: 20px;
+      }
+      #container>div{
+        border: 0.2px solid #f84364;
+        
+      }
+      #container>div>div{
+        display:  flex;
+      }
+       
+      button{
+        border: 0;
+        border-radius: 10px;
+        padding: 7px;
+        background-color: #f84364;
+        color: white;
+      }
+      img{
+        height: 150px;
+        width: 150px;
+      }
+      img+div{
+        padding-left: 20px;
+      }
+
+      /* Medium screens */
+      @media only screen and (min-width: 421px) and (max-width: 780px) {
+        img{
+          border-radius: 50%;
+        }
+        
+        #container{
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: auto;
+        }
+        #container>div>div{
+          padding: 20px;
+          flex-direction: column;
+        }
+        p,h3,button{
+          text-align: center;
+        }
+      }
+      
+      /* small screens */
+      @media only screen and (min-width: 70px) and (max-width: 420px) {
+        img{
+          border-radius: 50%;
+        }
+        
+        #container{
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: auto;
+        }
+        #container>div>div{
+          padding: 20px;
+          flex-direction: column;
+        }
+        p,h3,button{
+          text-align: center;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <!-- image link - 
+      https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/radhe-shyam-et00135230-07-03-2022-04-16-56.jpg -->
+    <h1>Just movies</h1>
+    <div id="container">
+      <div>
+        <div>
+          <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/radhe-shyam-et00135230-07-03-2022-04-16-56.jpg" alt="">
+          <div>
+            <h3>Radhe Shyam</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="https://www.bing.com/th?id=AMMS_e5bed00cd5929da67dedb3bffa5127a2&w=100&h=150&c=7&rs=1&qlt=80&pcl=f9f9f9&o=6&cdv=1&dpr=1.5&pid=16.1" alt="">
+          <div>
+            <h3>Bheemla Nayak</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="https://www.bing.com/th?id=AMMS_19cbf141643d118f3c30d7d9a478b2e4&w=128&h=166&c=7&o=6&dpr=1.5&pid=SANGAM" alt="">
+          <div>
+            <h3>RRR</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="https://www.bing.com/th?id=AMMS_c2843e53c47761c94058b35faeb4b35d&w=116&h=156&c=7&o=6&dpr=1.5&pid=SANGAM" alt="">
+          <div>
+            <h3>Spider Man-2021</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="https://www.bing.com/th?id=OIP.awz31QBz9aULoa-yeu-OXwHaD3&w=191&h=170&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="">
+          <div>
+            <h3>Gangubai</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="https://www.bing.com/th?id=OIP.5kWDcK7qWjMxTxtpTNDg8gHaGO&w=159&h=170&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="">
+          <div>
+            <h3>ET-2022</h3>
+            <p>Releasing on 11th March, 2022</p>
+            <button>Book Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

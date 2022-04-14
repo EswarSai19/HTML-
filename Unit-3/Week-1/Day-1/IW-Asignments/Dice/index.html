@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rolling Dice</title>
+    </head>
+        <style>
+            #box{
+                width: 20%;
+                margin: auto;
+                height: 60px;
+                display: flex;
+            }
+            #box>div{
+                width: 20%;
+                height: 100%;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-size: 30px;
+                border-radius: 10px;
+            }
+            button{
+               display: inline;
+               margin: auto;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               margin-top: 40px;
+               padding: 10px 20px;
+               font-size: 20px;
+               background-color: orange;
+               color: white;
+               border-color: none;
+               border-radius: 10px;
+            }
+            #winner{
+               margin: auto;
+               margin-bottom: 40px;
+               font-size: 30px;
+               border: 1px solid;
+               padding: 10px 20px;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               width: 100px;
+               height: 40px;
+               background-color: blueviolet;
+               color: white;
+               border-radius: 10px;
+            }
+
+        </style>
+   
+<body>
+<div id="winner"></div>
+<div id="box">
+    <div id="member-1"></div>
+    <div id="member-2"></div>
+    <div id="member-3"></div>
+</div>
+
+<button id="roll">ROLL THE DICE</button>
+
+</body>
+</html>
+
+<script>
+    document.querySelector("#roll").addEventListener("click",reloadFun)
+    function reloadFun(){
+        window.location.reload();
+    }
+    function getRndInteger(minimum, maximum) {
+    return Math.floor(Math.random() * (maximum - minimum)) + minimum;
+    }
+     var mem_A = document.getElementById("member-1").innerHTML = getRndInteger(1, 7);
+     var mem_B = document.getElementById("member-2").innerHTML = getRndInteger(1, 7);
+     var mem_C = document.getElementById("member-3").innerHTML = getRndInteger(1, 7);
+     console.log(mem_A,mem_B,mem_C);
+     var m1 = document.querySelector("#member-1")
+     var m2 = document.querySelector("#member-2")
+     var m3 = document.querySelector("#member-3")
+     var winner = document.querySelector("#winner")
+     if(mem_A > mem_B && mem_A > mem_C){
+         if(mem_B>mem_C){
+            m2.style.backgroundColor = "#ffda00"
+            m3.style.backgroundColor = "red"
+         }else if(mem_C>mem_B){
+            m3.style.backgroundColor = "#ffda00"
+            m2.style.backgroundColor = "red"
+         }else{
+            m3.style.backgroundColor = "#ffda00"
+            m2.style.backgroundColor = "#ffda00"
+         }
+       m1.style.backgroundColor = "green"
+       winner.innerText = "A"
+     }else if(mem_B > mem_A && mem_B > mem_C){
+         if(mem_A>mem_C){
+            m1.style.backgroundColor = "#ffda00"
+            m3.style.backgroundColor = "red"
+         }else if(mem_C>mem_A){
+            m3.style.backgroundColor = "#ffda00"
+            m1.style.backgroundColor = "red"
+         }else{
+            m1.style.backgroundColor = "#ffda00"
+            m3.style.backgroundColor = "#ffda00"
+         }
+       m2.style.backgroundColor = "green"
+       winner.innerText = "B"
+     }else if(mem_C > mem_B && mem_C > mem_A){
+         if(mem_B>mem_A){
+            m2.style.backgroundColor = "#ffda00"
+            m1.style.backgroundColor = "red"
+         }else if(mem_B<mem_A){
+            m1.style.backgroundColor = "#ffda00"
+            m2.style.backgroundColor = "red"
+         }else{
+            m1.style.backgroundColor = "#ffda00"
+            m2.style.backgroundColor = "#ffda00"
+         }
+       m3.style.backgroundColor = "green"
+       winner.innerText = "C"
+     }else if(mem_A == mem_B && mem_A>mem_C){
+        m1.style.backgroundColor = "green"
+        m2.style.backgroundColor = "green"
+        m3.style.backgroundColor = "#ffda00"
+        winner.innerText = "A & B"
+     }else if(mem_A == mem_C && mem_A>mem_B){
+        m1.style.backgroundColor = "green"
+        m3.style.backgroundColor = "green"
+        m2.style.backgroundColor = "#ffda00"
+        winner.innerText = "A & C"
+     }else if(mem_C == mem_B && mem_B>mem_A){
+        m3.style.backgroundColor = "green"
+        m2.style.backgroundColor = "green"
+        m1.style.backgroundColor = "#ffda00"
+        winner.innerText = "B & C"
+        
+     }else{
+        m1.style.backgroundColor = "blue"
+        m2.style.backgroundColor = "blue"
+        m3.style.backgroundColor = "blue"
+        winner.innerText = "TIE"
+     }
+</script>

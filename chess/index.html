@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+      src="https://kit.fontawesome.com/24c494a6b6.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Play Chess</title>
+    <style>
+        .square{
+            height: 500px;
+            width: 510px;
+            border: 1px solid rgb(250, 239, 239);
+            margin: auto;
+            margin-top: 20px;
+            display: flex;
+            box-sizing: border-box;
+        }
+        h2{
+            font-size: 60px;
+            margin: auto;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: green;
+        }
+        .row1{
+            width: 100%;
+            height: 12.5%;
+            border: 0.1px solid whitesmoke;
+            box-sizing: border-box;
+            display: inline block;
+        }
+        
+        .col1{
+            width: 20%;
+            height: 100%;
+            /* border: 0.1px solid black; */
+            box-sizing: border-box;
+        }
+        .white{
+            background-color:#eeeed2;
+        }
+        .green{
+            background-color: #769656;
+        }
+        .pw{
+            color:#eeeed2 ;
+            margin-top: -1%;
+        }
+        .gr{
+            color:#769656 ;
+            margin-top: -1%;
+            box-sizing: border-box;
+        }
+       .alp{
+           text-align: right;
+           margin-top: 45px;
+           margin-right: 5%;
+           box-sizing: border-box;
+       }
+       #a{
+        margin-top: 27px; 
+           text-align: right;
+           margin-right: 5%;
+           box-sizing: border-box;
+       }
+       #king{
+           font-size: 40px;
+           margin-top: -60%;
+           text-align: center;
+       }
+       
+            
+    </style>
+</head>
+<body>
+    <h2>PLAY CHESS</h2>
+    <div class="square">
+        <div class="col1">
+            <div class="row1 white">
+                <p class="gr">8</p>
+            </div>
+            <div class="row1 green">
+                <p class="pw">7</p>
+            </div>
+            <div class="row1 white">
+                <p class="gr">6</p>
+            </div>
+            <div class="row1 green">
+                <p class="pw">5</p>
+            </div>
+            <div class="row1 white">
+                <p class="gr">4</p>
+            </div>
+            <div class="row1 green">
+                <p class="pw">3</p>
+            </div>
+            <div class="row1 white">
+                <p class="gr">2</p>
+            </div>
+            <div class="row1 green">
+                <p class="pw">1</p>
+                <p class ="pw" id="a">a</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white">
+                <p class ="gr alp">b</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green">
+                <p class ="pw alp">c</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white">
+                <p class ="gr alp">d</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green">
+                <p class ="pw alp">e</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white">
+                <p class ="gr alp">f</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green">
+                <p class ="pw alp">g</p>
+            </div>
+        </div>
+        <div class="col1">
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white"></div>
+            <div class="row1 green"></div>
+            <div class="row1 white">
+                <p class ="gr alp">h</p>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

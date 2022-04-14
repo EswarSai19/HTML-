@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food</title>
+    <style>
+        img{
+            width: 250px;
+            height: 250px;
+        }
+        #items{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap:30px;
+            margin-left: 20px;
+        }
+        label{
+            display: block;
+            margin: auto;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .checkbox{
+            display:block;
+            width: 100%;
+            height: 40px;
+            margin: auto;
+            
+        }
+        button{
+            height: auto;
+            width: auto;
+            padding: 10px 30px;
+            font-size: 20px;
+            margin: auto;
+            display: block;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <input type="text" id="food"> -->
+    
+    <form id="items">
+        <label for=""> <img src="https://th.bing.com/th/id/A6Qv5o56wEH1GYA480x360?&rs=1&pid=ImgDet" alt=""><input  id="pizza" class="checkbox" type="checkbox">Pizza</label>
+        <label for=""> <img src="https://media.gettyimages.com/photos/homemade-chapati-picture-id508374340" alt=""><input id="chapathi" class="checkbox" type="checkbox">Chapathi</label>
+        <label for=""><img src="https://th.bing.com/th/id/OIP.0XTKHiqTHx1po6L8d-ZlTQHaFj?pid=ImgDet&rs=1" alt=""><input id="burger" class="checkbox" type="checkbox">Burger</label>
+        <label for=""> <img src="https://media.gettyimages.com/photos/masala-dosa-south-indian-food-picture-id909906350" alt=""><input id="dosa" class="checkbox" type="checkbox">Dosa</label>
+        <label for=""><img src="https://media.gettyimages.com/photos/sambar-idli-picture-id174233986" alt=""><input id="idly" class="checkbox" type="checkbox">Idly</label>
+        <label for=""><img src="https://img1.exportersindia.com/product_images/bc-full/dir_25/749171/frozen-parota-990030.jpg" alt=""><input id="parota" class="checkbox" type="checkbox">Parota</label>
+    </form>
+    <button id="order" onclick="storeData(),orderFood()"  >Order Food</button>
+
+    <div id="dispFood">
+        <p id="orderNo"></p>
+        <img id="image" src="" alt="">
+    </div>
+
+</body>
+</html>
+<script>
+       let ord; 
+        let ord_arr = []
+
+        function storeData(){
+            let form = document.getElementById("items")
+            let piz = form.pizza.checked;
+            let chap = form.chapathi.checked;
+            let bur = form.burger.checked;
+            let dosa = form.dosa.checked;
+            let idly = form.idly.checked;
+            let par = form.parota.checked;
+             ord = new Products(piz,chap,bur,dosa,idly,par)
+            ord_arr.push(ord)
+        }
+
+        
+
+        function Products(pi,c,b,d,i,pa){
+            this.pizza = pi
+            this.chapathi = c
+            this.burger = b
+            this.dosa = d
+            this.idly = i
+            this.parota = pa
+        }
+
+        let op_arr = [
+                       {name : "pizza", url:"https://th.bing.com/th/id/A6Qv5o56wEH1GYA480x360?&rs=1&pid=ImgDet"},
+                       {name : "chapathi", url:"https://media.gettyimages.com/photos/homemade-chapati-picture-id508374340"},
+                       {name : "burger", url:"https://th.bing.com/th/id/OIP.0XTKHiqTHx1po6L8d-ZlTQHaFj?pid=ImgDet&rs=1"},
+                       {name : "dosa", url:"https://media.gettyimages.com/photos/masala-dosa-south-indian-food-picture-id909906350"},
+                       {name : "idly", url:"https://media.gettyimages.com/photos/sambar-idli-picture-id174233986"},
+                       {name : "parota", url:"https://img1.exportersindia.com/product_images/bc-full/dir_25/749171/frozen-parota-990030.jpg"},
+        ]
+
+    function orderFood(){
+       for(let key in ord){
+            if(ord[key] == true){
+                 displayItems(key)
+            }
+        }    
+              function displayItems(order){
+                    let status = 'open'
+                    let myPromise = new Promise(function(resolve, reject){
+                        setTimeout(function(){
+                            if(status === 'open'){
+                                resolve(order)
+                            }else{
+                                reject()
+                            }
+                        },5000)
+                    })
+                        myPromise.then(function(res){
+                            console.log(res)
+                        let op = document.getElementById("dispFood")
+                        let img = document.getElementById("image")
+                        let orederNo = document.getElementById("orderNo")
+
+                       let y = op_arr.map(function(el){
+                            console.log(el);
+                            if(res == el.name){
+                               img.src = el.url
+                            }
+                            op.append(img)
+                        })
+                        
+                        
+                    })
+            
+        
+       }
+        
+       
+      
+        
+    }
+</script>

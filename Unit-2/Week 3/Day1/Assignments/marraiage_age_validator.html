@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>marriage_age_validator.html</title>
+</head>
+<body>
+    <select name="" id="Gender" >
+        <option value="">select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <input type="number" id="year" placeholder="Enter YOB">
+    <button id="submit" onclick="marriage_eligible()">Submit</button>
+</body>
+</html>
+<script>
+     function marriage_eligible(){
+         var year = document.getElementById("year").value
+         var gender = document.getElementById("Gender").value;
+         var age = 2022 - year;
+         if((age>=21 &&  gender == "male") || (age>=18 &&  gender == "female")){
+             alert("Eligible For Marriage");
+         }else{
+             alert("Not Eligible For Marriage");
+         }
+         
+     }
+</script>

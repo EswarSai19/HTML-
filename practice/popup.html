@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tooltip-wrap {
+  position: relative;
+}
+.tooltip-wrap .tooltip-content {
+  display: none;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  background-color: #fff;
+  padding: .5em;
+}
+.tooltip-wrap:hover .tooltip-content {
+  display: block;
+}
+    </style>
+</head>
+<body>
+    <div class="tooltip-wrap">
+        <img src="https://gloimg.gbtcdn.com/soa/gb/store/6507287161137004544/16432/goods_thumb_220-v1/15e47765f780.jpg" alt="Some Image" />
+        <div class="tooltip-content">
+          <p>Here is some content for the tooltip</p>
+        </div> 
+      </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Pricing Layout</title>
+    <style>
+          #top-section{
+              width: 40%;
+              margin: auto;
+              text-align: center;
+          }
+          #container{
+              display: grid;
+              grid-template-columns: repeat(3,1fr);
+              grid-template-rows: auto;
+              gap: 20px;
+              width: 60%;
+              margin: auto;
+              margin-top: 40px;
+          }
+          #container>div{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            text-align: center;
+              padding: 20px;
+              border-radius: 5px;
+          }
+          #green{
+              font-size: 40px;
+              margin-bottom: -20px;
+              margin-top: -10px;
+              color: #09ab78;
+          }
+          #italic{
+              font-style: italic;
+              margin-bottom: 30px;
+          }
+          button{
+              background-color: white;
+              color: #007aff;
+              font-size: 15px;
+              border-color: #007aff;
+              padding: 10px 30px;
+              border-radius: 5px;
+          }
+          button:hover{
+            background-color: #007aff;
+              color: white;
+          }
+          #gold{
+              color: #f3874f;
+              font-size: 40px;
+              margin-bottom: -20px;
+              margin-top: -10px;
+          }
+          #blue{
+            color: #4e9bf3;
+            font-size: 40px;
+              margin-bottom: -20px;
+              margin-top: -10px;
+          }
+
+          @media only screen and (min-width: 421px) and (max-width: 780px){
+              #top-section{
+                  width: 85%;
+              }
+              #container{
+                  display: grid;
+                  grid-template-columns: repeat(2,1fr);
+              }
+              #container>div{
+                  width: 85%;
+              }
+
+          }
+
+          @media only screen and (min-width: 81px) and (max-width: 420px){
+            #top-section{
+                  width: 85%;
+              }
+              #container{
+                  display: grid;
+                  grid-template-columns: repeat(1,1fr);
+              }
+              #container>div{
+                  width: 85%;
+              }
+          }
+    </style>
+</head>
+<body>
+    <div id="top-section">
+        <h1>Choose a plan that right for your business</h1>
+        <p>We collect reviews from our users so you can get an honest opinion of what an experience
+            with our website are really like!
+        </p>
+    </div>
+    <div id="container">
+        <div>
+            <h2>Starter Plan</h2>
+            <h1 id="green">Free</h1>
+            <p id="italic">per month</p>
+            <p>We collect reviews from our users so you can get an honest opinion of what an experience
+                with our website</p>
+                <button>Start Now</button>
+        </div>
+        <div>
+            <h2>Business Plan</h2>
+            <h1 id="gold">$39.00</h1>
+            <p id="italic">per month</p>
+            <p>We collect reviews from our users so you can get an honest opinion of what an experience
+                with our website</p>
+                <button>Start Now</button>
+        </div>
+        <div>
+            <h2>Premium Plan</h2>
+            <h1 id="blue">$49.00</h1>
+            <p id="italic">per month</p>
+            <p>We collect reviews from our users so you can get an honest opinion of what an experience
+                with our website</p>
+                <button>Start Now</button>
+        </div>
+    </div>
+</body>
+</html>

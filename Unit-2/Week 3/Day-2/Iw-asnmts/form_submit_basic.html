@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic_form_submit</title>
+</head>
+<body>
+    <div>
+        <form id="basicForm">
+            <input id ="Name" type="text" name="Name" placeholder="Enter Name" value=""><br>
+            <input id ="age" type="number" name="Age" placeholder="Enter age" value=""><br>
+            <select name="Gender" id="gender">
+                <option value="">Select gender</option>
+                <option value="male">M</option>
+                <option value="female">F</option>
+            </select><br>
+            <input id ="email" name="Email" type="text" placeholder="Enter email" value=""/><br>
+            <input id ="mobile" name="Mobile" type="number" placeholder="Enter mobile number" value=""/><br>
+            <hr>
+            <input type="submit">
+        </form>
+    </div>
+     
+</body>
+</html>
+<script>
+   var name = document.querySelector("#basicForm").addEventListener("submit",myFunction);
+   function myFunction(){
+       event.preventDefault();
+    //    var input = document.querySelectorAll("#basicForm>input");
+    //    for(var i=0; i<input.length; i++){
+    //       console.log(input[i].value);
+    //    }
+    //    console.log(document.querySelector("#gender").value)
+         
+      console.log("Name :",document.querySelector("#Name").value);
+      console.log("Age :",document.querySelector("#age").value)
+      console.log("Gender :",document.querySelector("#gender").value)
+      console.log("Email :",document.querySelector("#email").value)
+      console.log("Mobile Number :",document.querySelector("#mobile").value)
+   }
+   
+</script>

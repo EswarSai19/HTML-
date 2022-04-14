@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <style>
+        #box{
+            height: auto;
+            width: 85%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+        #sm_box{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 20px;
+        }
+        #imgdiv{
+            height: 450px;
+            width: 90%;
+            margin: auto;
+        }
+        button{
+            height: auto;
+            width: auto;
+            margin: auto;
+            padding: 5px 15px;
+            border-radius: 5px;
+            border-color: transparent;
+            margin-left: 20px;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        #counter{
+            font-size:  30px;
+            margin-bottom: 40px;
+        }
+
+    </style>
+</head>
+<body>
+    <p ><a href="./index.html">Admin Page</a></p>
+    <div id="counter"></div>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+
+    var displayArray = JSON.parse(localStorage.getItem("Products"))
+    displayItems(displayArray)
+    function displayItems(displayArray){
+        document.querySelector("#box").innerText = ""
+            document.querySelector("#counter").innerText = `Number of Products  ${displayArray.length}`
+            
+            displayArray.map(function(el,i){
+            var small_box = document.createElement("div");
+            small_box.id = "sm_box"
+            small_box.class = "product"
+
+            var imgdiv = document.createElement("div")
+            imgdiv.setAttribute("id","imgdiv")
+
+            var img = document.createElement("img");
+            img.src = el.image;
+            img.style.width = "100%"
+            img.style.height = "100%"
+            imgdiv.append(img);
+
+            var name = document.createElement("h3");
+            name.innerText = `Name : ${el.name}`;
+            name.style.textAlign = "center"
+
+            var price = document.createElement("p");
+            price.innerText = `Price : ${el.price}`;
+            price.style.textAlign = "center"
+
+            var remove = document.createElement("button")
+            remove.innerText = "Remove"
+            remove.style.backgroundColor = "brown"
+            remove.addEventListener("click", function(){
+                removeFun(el,i)
+            })
+            remove.setAttribute("id","remove")
+
+            var sold = document.createElement("button")
+            sold.innerText = "Sold"
+            sold.value = el.sold
+            if(el.sold == true ){
+                sold.style.backgroundColor = "red"
+            }else{
+                sold.style.backgroundColor = "green"
+            }
+            sold.id = "sold"
+            
+            sold.addEventListener("click", function(){
+              if(el.sold != true){
+                sold.style.backgroundColor = "red"
+                el.sold = !el.sold
+                localStorage.setItem("products",JSON.stringify(el))
+              }else{
+                sold.style.backgroundColor = "green"
+                el.sold = !el.sold
+                localStorage.setItem("products",JSON.stringify(el))
+              }
+                
+               
+            })
+            small_box.append(imgdiv,name,price,remove,sold)
+            document.querySelector("#box").append(small_box)
+        })
+
+    }
+    function removeFun(el,i){
+    
+        displayArray.splice(i,1)
+        localStorage.setItem("Products",JSON.stringify(displayArray))
+        displayItems(displayArray)
+        window.location.reload()
+    }
+   
+       
+        
+       
+      
+    
+</script>

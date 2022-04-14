@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>country_continent</title>
+</head>
+<body>
+    <div>
+        <select name="" id="continent_select">
+            <option value="">Select Country</option>
+            <option value="India">India</option>
+            <option value="United States of America">United States of America</option>
+            <option value="China">China</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Australia">Australia</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Sweden">Sweden</option>
+        </select>
+    </div>
+</body>
+</html>
+<script>
+    // var countriesobj = [
+    //                   {country_name:"India", continent: "Asia"},
+    //                   {country_name:"United States of America", continent: "North and Central America"},
+    //                   {country_name:"China", continent: "Asia"},
+    //                   {country_name:"Nepal", continent: "Asia"},
+    //                   {country_name:"Australia", continent: "Oceania"},
+    //                   {country_name:"France", continent: "Europe"},
+    //                   {country_name:"Germany", continent: "Europe"},
+    //                   {country_name:"South Africa", continent: "Africa"},
+    //                   {country_name:"Nigeria", continent: "Africa"},
+    //                   {country_name:"Mexico", continent: "North and Central America"},
+    //                   {country_name:"Argentina", continent: "South America"},
+    //                   {country_name:"Brazil", continent: "South America"},
+    //                   {country_name:"Canada", continent: "North and Central America"},
+    //                   {country_name:"Singapore", continent: "Asia"},
+    //                   {country_name:"Sweden", continent: "Europe"},
+    // ];
+
+    var button = document.createElement("button");
+    button.textContent = "Find continent"
+    button.setAttribute("id","Find_Continent");
+    document.querySelector("body").append(button);
+    
+    document.querySelector("button").addEventListener("click",findContinent);
+    // function findContinent(){
+    //     var output = countriesobj.map(function(el,i){
+    //       var country = document.querySelector("select").value;
+          
+    //       if(country == el.country_name){
+    //         alert( "The Continent is "+el.continent);
+    //       }
+    //   })  
+    // }
+    
+    function findContinent(){
+        var continent = document.querySelector("#continent_select").value;
+        console.log(continent)
+        switch(continent){
+         case "India" :
+         case "Chaina":
+         case "Nepal" :
+         case "Singapore":    
+                            alert("The continent is Asia");
+                            break;
+        case "United States of America" : 
+        case "Mexico" :
+        case "Canada" :
+                        alert("The continent is North and Central America");
+                        break;
+       
+        case "Australia" : alert("The continent is Oceania");
+                           break;
+         case "France" :
+         case "Germany" : 
+         case "Sweden" :   
+                            alert("The continent is Europe");
+                            break;
+         
+         case "South Africa" : 
+            case "Nigeria" : alert("The continent is Africa");
+                            break;
+          
+        case "Argentina" : 
+         case "Brazil" : alert("The continent is South America");
+                           break;
+          
+        
+                                      
+
+        }
+    }
+    
+</script>

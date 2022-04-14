@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 400px;
+            width: 90%;
+            margin: auto;
+        }
+        #nav{
+          height: 80px;
+          width: 100%;
+          margin: auto;
+          background-color: yellow;
+          color: black;
+          font-size: 50px;
+          display: flex;
+          justify-content:flex-start;
+          align-items: center;
+          padding-left: 10px;
+          box-sizing: border-box;
+          margin-bottom: 20px;
+        }
+        #nav+div{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(1, 240px) ;
+            gap: 30px;
+            margin: auto;
+        }
+        #nav+div>div{
+            width: 100%;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+        }
+        #nav+div>div:nth-child(1){
+            display: flex;
+            font-size: 30px;
+          justify-content:flex-start;
+          padding: 10px 10px;
+          background-color: red; 
+        }
+        #nav+div>div:nth-child(2){
+            display: flex;
+            font-size: 30px;
+          justify-content:flex-start;
+          padding: 10px 10px;
+          background-color: green; 
+ 
+        }
+        #nav+div>div:nth-child(3){
+            display: flex;
+            font-size: 30px;
+          justify-content:flex-start;
+          padding: 10px 10px;
+          background-color: blue; 
+ 
+        }
+        #nav+div>div:nth-child(4){
+            display: flex;
+            font-size: 30px;
+          justify-content:flex-start;
+          padding: 10px 10px;
+          background-color: grey;  
+        }
+        @media only screen and (max-width:720px) and (min-width:380px) {
+            #nav{
+                flex-direction: row;
+            }
+            #nav+div>div{
+                flex-direction: column;
+               
+                
+            }
+            #container{
+                
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">Navigation</div>
+        <div>
+            <div>Box1</div>
+            <div>Box2</div>
+            <div>Box3</div>
+            <div>Box4</div>
+        </div>
+    </div>
+    
+</body>
+</html>

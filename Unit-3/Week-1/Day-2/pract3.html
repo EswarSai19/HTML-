@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+//   function Shoes(b,p){
+//     this.brand = b,
+//     this.price = p
+//   }
+
+//   Shoes.prototype.coupon = function(){
+//       console.log(`You got 20% discount for purchasing ${this.brand}`);
+//   }
+  
+//   let cus = new Shoes('nike',2000)
+//   console.log('cus:', cus)
+//   cus.coupon()
+
+let p1 = new Array(1,2,3)
+// console.log('p1:', p1)
+
+
+function myArray(){
+    // console.log(arguments)
+    Object.defineProperty(this, "length",{
+        value : 0,
+        writable : true,
+        enumerable : false,
+    });
+    this.length = arguments.length;
+
+    for(let i=0; i<this.length; i++){
+        this[i] = arguments[i]
+    }
+}
+
+let p2 = new myArray('x','y','z')
+
+
+
+myArray.prototype.Push = function(value){
+    let index = this.length
+    this[index] = value
+    this.length++
+}
+p2.Push('a')
+p2.Push('j')
+console.log('p2:', p2)
+</script>

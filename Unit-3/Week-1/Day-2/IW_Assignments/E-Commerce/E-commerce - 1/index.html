@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        #box{
+            width: 30%;
+            margin: auto;
+            
+        }
+        input{
+            display: block;
+            height: 40px;
+            width: 100%;
+            margin: auto;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        h1{
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        #gender{
+            height: 30px;
+            width: 100%;
+            margin: auto;
+        }
+        #add{
+            width: auto;
+            height: auto;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+        #sold{
+            height: 20px;
+            margin-left: -150px;
+            margin-right: -160px;
+            margin-top: 20px;
+            
+        }
+        label{
+           
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+          
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="storeProducts(event)" id="products">
+        <p ><a href="./product.html">Product Page</a></p>
+        <h1>Enter Prtoduct Details</h1>
+        <div id="box">
+           
+            <input type="text" placeholder="product name" id="name">
+            <input type="text" placeholder="category" id="category">
+            <input type="text" placeholder="enter URL" id="image">
+            <input type="number" placeholder="price" id="price">
+            <select name="" id="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+           <label for="sold"><input id="sold" placeholder="Sold" type="checkbox">Sold</label>
+            <input type="submit" id="add">
+        </div>
+    </form>
+</body>
+</html>
+<script>
+
+    function products(n,c,i,p,g,s){
+        this.name = n;
+        this.category = c;
+        this.image = i;
+        this.price = p;
+        this.gender = g;
+        this.sold = s;
+    }
+    var ProdArr = JSON.parse(localStorage.getItem("Products")) || [];
+    
+   
+    function storeProducts(e){
+        
+        e.preventDefault();
+
+        let form = document.getElementById("products")
+        let name = form.name.value;
+        let cat = form.category.value;
+        let img = form.image.value;
+        let pr = form.price.value;
+        let gen = form.gender.value;
+        let sold = form.sold.checked;
+        
+        let p1 = new products(name,cat,img,pr,gen,sold)
+        console.log(p1);
+        
+        
+        ProdArr.push(p1)
+        localStorage.setItem("Products", JSON.stringify(ProdArr))
+        document.querySelector("#name").value = null
+        document.querySelector("#category").value = null
+        document.querySelector("#image").value = null
+        document.querySelector("#price").value = null
+        document.querySelector("#gender").value = null
+        document.querySelector("#sold").checked = false
+    }
+
+   
+        
+        
+</script>

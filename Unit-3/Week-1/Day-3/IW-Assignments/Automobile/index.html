@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automobile</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // Using Object.create()
+
+    const Automobile = {
+        wheels : 4,
+        Headlightes : 2,
+        Doors : 4,
+        Mirrors : 6,
+    }
+
+    let car1 = Object.create(Automobile)
+    
+    car1.speed = '180 Kmph'
+    car1.color = 'grey'
+    console.log('car1:', car1)
+
+    let car2 = Object.create(Automobile)
+    car2.speed = '200 Kmph'
+    car2.collor = 'black'
+    console.log('car2:', car2)
+
+    //  Using Constructor functions
+
+    function automobile(c,s,e,st,dt){
+        this.color = c;
+        this.speed = s;
+        this.engine = e;
+        this.steering_type = st;
+        this.drive_type = dt;
+    }
+
+    let car3 = new automobile('green','180 Kmph','V8','Power','Rear wheel drive')
+    console.log('car3:', car3)
+    let car4 = new automobile('white','160 Kmph','V6','Normal','front wheel drive')
+</script>

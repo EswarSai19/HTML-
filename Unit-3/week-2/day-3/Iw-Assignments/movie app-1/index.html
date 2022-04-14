@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie API-1</title>
+    <style>
+        #searchBar{
+            border: 1px solid ;
+            width: 50%;
+            height: 30px;
+            display: flex;
+            margin: auto;
+            border-radius: 10px;
+        }
+        input{
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="searchBar">
+        <input type="text" >
+        <button id="search" onclick="searchFun()">Search</button>
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let moviesArr = [
+                    {
+                        "Title":"The Fast and the Furious",
+                        "Year":"2001",
+                        "imdbID":"tt0232500",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BNzlkNzVjMDMtOTdhZC00MGE1LTkxODctMzFmMjkwZmMxZjFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"The Fast and the Furious: Tokyo Drift",
+                        "Year":"2006",
+                        "imdbID":"tt0463985",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"The Fast and the Furious",
+                        "Year":"1954",
+                        "imdbID":"tt0046969",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BZmI3YmNhNzktOTMzNC00ODg4LTk3YmQtMGI2ZGQzNzcwZmRkXkEyXkFqcGdeQXVyMTQ2MjQyNDc@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Fast and Furious",
+                        "Year":"1939",
+                        "imdbID":"tt0031298",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BMjAyNTQ1NjA3Ml5BMl5BanBnXkFtZTgwOTIyNjIxMzE@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Fast and the Furious: Tokyo Drift - The Japanese Way",
+                        "Year":"2006",
+                        "imdbID":"tt0878117",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Fast and Furious 6: The Game",
+                        "Year":"2013",
+                        "imdbID":"tt4106374",
+                        "Type":"game",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BNGFiNjYzOTQtMzAyYS00OTUwLWIxMGUtZGQ5NjI2YjgzMGJmXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Fast and Furious Crossroads",
+                        "Year":"2020",
+                        "imdbID":"tt11468188",
+                        "Type":"game",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BZjc4NjBmMDMtNmQ4MS00MGRhLWI2YTgtYTEwNjZiZGMyNDViXkEyXkFqcGdeQXVyNzQzNDM3NTI@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Jackie Chan: Fast, Funny and Furious",
+                        "Year":"2002",
+                        "imdbID":"tt0454613",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BNjkxNTU2MjYtMWQ0Mi00MDUyLTkyOGMtMWIyMDg1ZDRmMjhjXkEyXkFqcGdeQXVyNTMyODM3MTg@._V1_SX300.jpg"
+                     },
+                    {
+                        "Title":"Tasmanian Devil: The Fast and Furious Life of Errol Flynn",
+                        "Year":"2007",
+                        "imdbID":"tt1008725",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BZjFjYTQxNWUtNTQ5Yy00ZjA3LTllMTYtM2UxYjM3MGNkM2NhXkEyXkFqcGdeQXVyNzQzNTcwMTU@._V1_SX300.jpg"
+                    },
+                    {
+                        "Title":"Fast and Furious",
+                        "Year":"1927",
+                        "imdbID":"tt0017866",
+                        "Type":"movie",
+                        "Poster":"https://m.media-amazon.com/images/M/MV5BMDU0NzIxY2QtNWZkMy00NDViLWFjNzItM2Y3YTE2MTQzYzljXkEyXkFqcGdeQXVyMjUxODE0MDY@._V1_SX300.jpg"
+                    }
+]
+    const url = ""
+</script>

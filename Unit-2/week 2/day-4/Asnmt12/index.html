@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout-1</title>
+    <style>
+       #container{
+           display: grid;
+           height: 350px;
+           width: 90%;
+           margin: auto;
+           margin-top: 40px;           
+           /* grid-template-columns: repeat(2 1fr); */
+           /* grid-template-rows: repeat(2,80px); */
+           gap: 20px;
+           grid-template-areas: 
+                                  "a a a a"
+                                  "b c d e"
+                                  "b c d e";
+                                  
+       }
+       #container>div{
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          display: flex;
+         
+          justify-content: start;
+          
+       }
+      
+       #container>div:nth-child(1){
+           grid-area: a;
+           width: 100%;
+           height: 80px;
+           background-color: yellow;
+           padding: 5px 10px;
+           box-sizing: border-box;
+           font-size: 60px;
+           margin-bottom: -1px;
+       }
+       #container>div:nth-child(2){
+           grid-area: b;
+           font-size: 30px;
+           padding: 10px 15px;
+           box-sizing: border-box;
+           background-color: red;
+       }
+       #container>div:nth-child(3){
+           grid-area: c;
+           font-size: 30px;
+           padding: 10px 15px;
+           box-sizing: border-box;
+           background-color: lightgreen;
+       }
+       #container>div:nth-child(4){
+           grid-area: d;
+           font-size: 30px;
+           padding: 10px 15px;
+           box-sizing: border-box;
+           background-color: rgb(44, 44, 204);
+       }
+       #container>div:nth-child(5){
+           grid-area: e;
+           font-size: 30px;
+           padding: 10px 15px;
+           box-sizing: border-box;
+           background-color: grey;
+       }
+       @media only screen and (min-width: 81px) and (max-width: 420px){
+        #container{
+              display: grid;
+             
+              grid-template-columns: repeat(1,1fr);
+              grid-template-rows: auto;
+              grid-template-areas: "a"
+                                   "b"
+                                   "e"
+                                   "c"
+                                   "d";
+          }
+          #nav{
+              display: grid;
+              grid-template-columns: repeat(2,1fr);
+          }
+          #container>div{
+              height: 100px;
+          }
+       }
+
+       @media only screen and (min-width: 421px) and (max-width: 780px){
+        #container{
+              display: grid;
+              
+              grid-template-columns: repeat(2,1fr);
+              grid-template-rows: auto;
+              grid-template-areas: "a a"
+                                   "b c"
+                                   "d e";
+              gap :20px 
+          }
+          
+          #container>div{
+              height: 170px;
+          }
+         
+       }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="nav">Navigation</div>
+        <div>Box-1</div>
+        <div>Box-2</div>
+        <div>Box-3</div>
+        <div>Box-4</div>
+    </div>
+</body>
+</html>

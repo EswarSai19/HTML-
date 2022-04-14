@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//    let a1 = new array ('x','y','z')
+//    function myArray(){
+//        this.length = arguments.length;
+//        console.log(arguments);
+//        for(var i=0; i<this.length; i++){
+//            this[i] = arguments[i]
+//        }
+//    }
+//    let a2= new myArray('x','y','z')
+
+const automobile = {
+  wheels: 4,
+  color: 'black',
+  engine: 'V8',
+  steering_type: "power",
+  drive_type : "front_wheel",
+};
+
+// automobile.prototype.drive_type = 
+const car1 = Object.create(automobile);
+console.log('car1:', car1)
+
+const car2 = Object.create(car1);
+// console.log('car2:', car2)
+
+function Automobile(w,c,e,s,d){
+    this.wheels= w
+  this.color = c
+  this.engine = e
+  this.steering_type= s 
+  this.drive_type = d
+}
+  Automobile.prototype.Speed = function(speed){
+    console.log(`above ${speed} is not good for your safety`);
+  }
+ 
+let first_car = new Automobile(4,'white','v6','power','rear_wheel')
+// console.log('first_car:', first_car)
+let second_car = new Automobile(4,'grey','v10','normal','four_wheel_drive')
+// console.log('second_car:', second_car)
+first_car.Speed('100 Kmph')
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Array</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let a1 = new Array(1,2,3)
+    console.log('a1:', a1)
+
+    function miArray(){
+        this.length = arguments.length;
+
+        for(var i=0; i<this.length; i++){
+            this[i] = arguments[i]
+        }
+
+       
+    }
+    let a2 = new miArray('a','b','c','d','e','f')
+    
+
+    miArray.prototype.posh = function(value){
+        let index = this.length;
+        this[index] = value;
+        this.length++;
+    }
+    a2.posh('x')
+    a2.posh('y')
+
+    miArray.prototype.pop = function(){
+        let index = this.length-1
+        delete this[index];
+        this.length--
+    }
+    a2.pop()
+
+    miArray.prototype.top = function(){
+        let index = this.length-1;
+        console.log(this[index]);
+    }
+    a2.top()
+
+    miArray.prototype.print = function(){
+        let arr = []
+        for(var i=0; i<this.length; i++){
+           arr.push(this[i]);
+        }
+        console.log(arr);
+    }
+    a2.print()
+
+    miArray.prototype.printReverse = function(){
+        let arr = []
+        for(var i=this.length-1; i>=0; i--){
+            arr.push(this[i])
+        }
+        console.log(arr);
+    }
+    a2.printReverse()
+
+    miArray.prototype.size = function(){
+        console.log(this.length);
+    }
+    a2.size()
+    console.log('a2:', a2)
+</script>

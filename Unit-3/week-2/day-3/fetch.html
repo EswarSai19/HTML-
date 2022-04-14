@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            margin: 5%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    const url = "https://reqres.in/api/users?page=2"
+    const container = document.getElementById("container")
+    fetch(url)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(res){
+        console.log(res)
+        appendData(res.data)
+    })
+    .catch(function(err){
+        console.log(err)
+    })
+
+    function appendData(data){
+        data.forEach(function(el){
+            let div = document.createElement("div")
+            let avatar = document.createElement("img")
+            avatar.src = el.avatar
+            let first_name = document.createElement("p")
+            first_name.innerText = el.first_name;
+            let last_name = document.createElement("p")
+            last_name.innerText = el.last_name
+            div.append(avatar,first_name,last_name)
+            container.append(div)
+        })
+    }
+</script>

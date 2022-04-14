@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .heading h1{
+          
+          text-align: center;
+          
+      }
+      .heading>p{
+        width: 70%;
+        text-align: center;
+        margin: auto;
+      }
+      #music{
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+        margin: auto;
+        margin-top: 40px;
+      }
+     
+      #music >div>img{
+        display: block;
+        margin: auto;
+        height: 80px;
+        width: 80px;
+      }
+      #music >div>h3,p{
+        text-align: center;
+      }
+      #pricing{
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+        margin: auto;
+        margin-top: 40px;
+      }
+      #pricing > div{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 10px;
+        line-height: 15px;
+      }
+      #pricing > div>h1{
+        font-size: 30px;
+        color: #5252aa;
+      }
+      hr{
+        
+        width: 98%;
+        border: 1px solid #5252aa;
+
+      }
+      ul>li{
+        line-height: 40px;
+        color: #7aafc1;
+      }
+      button{
+        background-color: #5252aa;
+        color: white;
+        border-radius: 15px;
+        padding: 10px 25px;
+        border: none;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      /* Medium screens - take min width and max width according to your screen sizes */
+      @media all and (min-width: 401px) and (max-width: 720px) {
+        #music{
+          grid-template-columns: repeat(2,1fr);
+        }
+        #pricing{
+          grid-template-columns: repeat(2,1fr);
+        }
+      }
+
+      /* Small screens - take min width and max width according to your screen sizes */
+
+      @media all and (min-width: 81px) and (max-width: 400px) {
+        #music{
+          grid-template-columns: repeat(1,1fr);
+        }
+        #pricing{
+          grid-template-columns: repeat(1,1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Do not change class names and IDs -->
+
+    <!-- Top section -->
+    <div id="top-section">
+      <div class="heading">
+        <h1>Get ready for seamless online music</h1>
+        <p>
+          Utrust is a seamless integration that gives e-commerce businesses the
+          power to accept digital currencies - and get all the benefits you
+          can’t with just traditional payment methods.
+        </p>
+      </div>
+
+      <!-- Music cards -->
+      <div id="music">
+        <div>
+          <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-03-13/1_313769.jpeg" alt="">
+          <h3>Offline Mode</h3>
+          <p>Save and listen anywhere</p>
+        </div>
+        <div>
+          <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-03-13/2_656773.jpeg" alt="">
+          <h3>Offline Mode</h3>
+          <p>Save and listen anywhere</p>
+        </div>
+        <div>
+          <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-03-13/3_837237.jpeg" alt="">
+          <h3>Offline Mode</h3>
+          <p>Save and listen anywhere</p>
+        </div>
+        <div>
+          <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-03-13/4_842327.jpeg" alt="">
+          <h3>Offline Mode</h3>
+          <p>Save and listen anywhere</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom section -->
+
+    <div class="heading">
+      <h1>Listen free or subscribe to MusicLab Premium.</h1>
+      <p>
+        Utrust is a seamless integration that gives e-commerce businesses the
+        power to accept digital currencies - and get all the benefits you can’t
+        with just traditional payment methods.
+      </p>
+    </div>
+
+    <!-- Pricing cards -->
+    <div id="pricing">
+      <div>
+        <h4>MusicBox Free</h4>
+        <h1>$0.00 month</h1>
+        <hr>
+        <ul type="square">
+          <li>Online Listening</li>
+          <li>Regular Audio</li>
+          <li>With Advertising</li>
+          <li>30 Skips per day</li>
+        </ul>
+        <button>Get Free</button>
+      </div>
+      <div>
+        <h4>MusicBox Free</h4>
+        <h1>$0.00 month</h1>
+        <hr>
+        <ul type="square">
+          <li>Online Listening</li>
+          <li>Regular Audio</li>
+          <li>With Advertising</li>
+          <li>30 Skips per day</li>
+        </ul>
+        <button>Get Free</button>
+      </div>
+      <div>
+        <h4>MusicBox Free</h4>
+        <h1>$0.00 month</h1>
+        <hr>
+        <ul type="square">
+          <li>Online Listening</li>
+          <li>Regular Audio</li>
+          <li>With Advertising</li>
+          <li>30 Skips per day</li>
+        </ul>
+        <button>Get Free</button>
+      </div>
+    </div>
+  </body>
+</html>
