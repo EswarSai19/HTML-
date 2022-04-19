@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4dbaa63c16.js" crossorigin="anonymous"></script>
+    <title>Fetch</title>
+    <style>
+        #searchBar{
+            height: 40px;
+            width: 30%;
+            display: flex;
+            margin: auto;
+            border: 2px solid rgb(186, 75, 75);
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+            /* border-color: yellow; */
+        }
+        #search{
+            border: 1px solid;
+            padding: 8px 15px;
+            
+            border-radius: 10px;
+            border-color: transparent;
+            background-color: rgb(186, 75, 75);
+        }
+        #search>i{
+            font-size: 20px;
+        }
+        input{
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+            border-color: transparent;
+        }
+        .mapouter{
+            position:relative;
+            text-align:right;
+            height:500px;
+            width:600px;
+        }
+        .gmap_canvas {
+            overflow:hidden;
+            background:none!important;
+            height:500px;
+            width:600px;
+        }
+        #map{
+            border: 1px solid;
+            width: 60%;
+            padding: 20px;
+            margin: auto;
+        }
+        #container{
+            display: flex;
+            border: 1px solid;
+            
+            width: 80%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        #details{
+            border: 1px solid;
+            width: 30%;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="searchBar">
+        <input type="text" placeholder="Enter City Name" id="city">
+        <div id="search" onclick="getData()"><i class="fa-solid fa-magnifying-glass"></i></div>
+    </div>
+    <div id="container">
+        <div id="details">
+            <p id="area"></p>
+            <p id="min_temp"></p>
+            <p id="max_temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
+        </div>
+        <div id="map">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe width="600" 
+                        height="500" 
+                        id="gmap_canvas" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0">
+                    </iframe>
+                    <a href="https://putlocker-is.org"></a><br>
+                    <a href="https://www.embedgooglemap.net">google maps web pages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
+<script>
+
+    
+    function getData(){
+        let city = document.getElementById("city").value
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e4e6da26e5946c83e3edf2487b7257b6`;
+        fetch(url)
+        .then(function(res){
+            return res.json()
+        })
+        .then(function(res){
+            console.log(res)
+            appendData(res)
+            
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    } 
+
+    function appendData(data){
+        console.log(data.name);
+        let container = document.getElementById("details")
+        let area = document.getElementById("area")
+        let area_i = document.createElement("i")
+        area_i.class = "fa-solid fa-city"
+        area.innerText = `City Name : ${data.name}`
+        console.log(area)
+        area.append(area_i)
+        container.append(area)
+        let map = document.getElementById("gmap_canvas")
+        map.src = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+        document.getElementById("gmap_canvas").append(map)
+    }
+    
+</script>

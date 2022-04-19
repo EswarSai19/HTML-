@@ -18,88 +18,212 @@
             width: 100%;
             border-radius: 10px;
         }
+        #container{
+            border: 1px solid;
+            width: 85%;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        #info{
+            border: 1px solid;
+            width: 60%;
+            height: 100%;
+            margin: auto;
+            
+            /* box-sizing: border-box; */
+        }
+        h2{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #info>p{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 15px;
+        }
+        #poster{
+            border: 1px solid;
+            width: 38%;
+            height: 500px;
+            
+        }
+        #rel_date{
+            display: flex;
+            width: 60%;
+            height: auto;
+            align-items: center;
+            /* margin: auto; */
+            justify-content: space-between;
+            
+        }
+        #rated{
+            /* border: 1px solid; */
+            padding: 5px;
+            font-size: 20px;
+            color: green;
+        }
+        #info>p:nth-child(8){
+            width: 80%;
+            height: auto;
+            line-height: 20px;
+        }
+
+
     </style>
 </head>
 <body>
     <div id="searchBar">
-        <input type="text" >
+        <input type="text" id="movie_name" placeholder="Search for Movies,Shows,Web Series..." >
         <button id="search" onclick="searchFun()">Search</button>
     </div>
-    <div id="container"></div>
+    <div id="container">
+        <div id="info">
+            <h2 id="title"></h2>
+            <div id="rel_date">
+                <p id="year"></p>
+                <div id="rated"></div>
+                <p id="date"></p>
+            </div>
+            <p id="imdbrating"></p>
+            <p id="genre"></p>
+            <p id="actors"></p>
+            <p id="director"></p>
+            <p id="writer"></p>
+            <p id="plot"></p>
+            <p id="lang"></p>
+            <p id="country"></p>
+            <p id="runtime"></p>
+        </div>
+        <div id="poster"></div>
+    </div>
 </body>
 </html>
 <script>
     let moviesArr = [
-                    {
-                        "Title":"The Fast and the Furious",
-                        "Year":"2001",
-                        "imdbID":"tt0232500",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BNzlkNzVjMDMtOTdhZC00MGE1LTkxODctMzFmMjkwZmMxZjFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"The Fast and the Furious: Tokyo Drift",
-                        "Year":"2006",
-                        "imdbID":"tt0463985",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"The Fast and the Furious",
-                        "Year":"1954",
-                        "imdbID":"tt0046969",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BZmI3YmNhNzktOTMzNC00ODg4LTk3YmQtMGI2ZGQzNzcwZmRkXkEyXkFqcGdeQXVyMTQ2MjQyNDc@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Fast and Furious",
-                        "Year":"1939",
-                        "imdbID":"tt0031298",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BMjAyNTQ1NjA3Ml5BMl5BanBnXkFtZTgwOTIyNjIxMzE@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Fast and the Furious: Tokyo Drift - The Japanese Way",
-                        "Year":"2006",
-                        "imdbID":"tt0878117",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BMTQ2NTMxODEyNV5BMl5BanBnXkFtZTcwMDgxMjA0MQ@@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Fast and Furious 6: The Game",
-                        "Year":"2013",
-                        "imdbID":"tt4106374",
-                        "Type":"game",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BNGFiNjYzOTQtMzAyYS00OTUwLWIxMGUtZGQ5NjI2YjgzMGJmXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Fast and Furious Crossroads",
-                        "Year":"2020",
-                        "imdbID":"tt11468188",
-                        "Type":"game",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BZjc4NjBmMDMtNmQ4MS00MGRhLWI2YTgtYTEwNjZiZGMyNDViXkEyXkFqcGdeQXVyNzQzNDM3NTI@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Jackie Chan: Fast, Funny and Furious",
-                        "Year":"2002",
-                        "imdbID":"tt0454613",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BNjkxNTU2MjYtMWQ0Mi00MDUyLTkyOGMtMWIyMDg1ZDRmMjhjXkEyXkFqcGdeQXVyNTMyODM3MTg@._V1_SX300.jpg"
-                     },
-                    {
-                        "Title":"Tasmanian Devil: The Fast and Furious Life of Errol Flynn",
-                        "Year":"2007",
-                        "imdbID":"tt1008725",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BZjFjYTQxNWUtNTQ5Yy00ZjA3LTllMTYtM2UxYjM3MGNkM2NhXkEyXkFqcGdeQXVyNzQzNTcwMTU@._V1_SX300.jpg"
-                    },
-                    {
-                        "Title":"Fast and Furious",
-                        "Year":"1927",
-                        "imdbID":"tt0017866",
-                        "Type":"movie",
-                        "Poster":"https://m.media-amazon.com/images/M/MV5BMDU0NzIxY2QtNWZkMy00NDViLWFjNzItM2Y3YTE2MTQzYzljXkEyXkFqcGdeQXVyMjUxODE0MDY@._V1_SX300.jpg"
-                    }
+    {
+        "Title":"Guardians of the Galaxy",
+        "Year":"2014",
+        "Rated":"PG-13",
+        "Released":"01 Aug 2014",
+        "Runtime":"121 min",
+        "Genre":"Action, Adventure, Comedy",
+        "Director":"James Gunn",
+        "Writer":"James Gunn, Nicole Perlman, Dan Abnett",
+        "Actors":"Chris Pratt, Vin Diesel, Bradley Cooper",
+        "Plot":"A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.",
+        "Language":"English",
+        "Country":"United States",
+        "Awards":"Nominated for 2 Oscars. 52 wins & 102 nominations total",
+        "Poster":"https://m.media-amazon.com/images/M/MV5BMTAwMjU5OTgxNjZeQTJeQWpwZ15BbWU4MDUxNDYxODEx._V1_SX300.jpg",
+        "imdbRating":"8.1",
+        "BoxOffice":"$333,718,600",
+    },
+    {
+        "Title":"Avatar",
+        "Year":"2009",
+        "Rated":"PG-13",
+        "Released":"18 Dec 2009",
+        "Runtime":"162 min",
+        "Genre":"Action, Adventure, Fantasy",
+        "Director":"James Cameron",
+        "Writer":"James Cameron",
+        "Actors":"Sam Worthington, Zoe Saldana, Sigourney Weaver",
+        "Plot":"A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        "Language":"English, Spanish",
+        "Country":"United States",
+        "Awards":"Won 3 Oscars. 89 wins & 131 nominations total",
+        "Poster":"https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+        "imdbRating":"7.9",
+        "BoxOffice":"$760,507,625",
+    }
 ]
-    const url = ""
+
+function searchFun(){
+    let movie = document.getElementById("movie_name").value
+    const url = `http://www.omdbapi.com/?t=${movie}&apikey=41c4974c&`
+    fetch(url)
+    .then(function(res){
+        return res.json()
+    })
+    .then(function(res){
+        console.log(res.Response)
+        if(res.Response == false){
+        let container = document.getElementById("container")
+        container.value = ""
+        let img = document.createElement("img")
+        img.src = "./Screenshot 2022-04-17 183617.png"
+        container.append(img)
+        }
+        else{
+            appendData(res)
+        }
+        console.log(res)
+    })
+    .catch(function(err){
+        console.log(err)
+       
+       
+    })
+
+}
+
+function appendData(data){
+    let container = document.getElementById("container")
+    container.value = ""
+    let poster = document.getElementById("poster")
+    poster.innerText = ""
+    let info = document.getElementById("info")
+
+    let name = document.getElementById("title")
+    name.innerText = data.Title
+    
+    let release = document.getElementById("rel_date")
+    let year = document.getElementById("year")
+    year.innerText = `Year :${data.Year}`
+    let rated = document.getElementById("rated")
+    rated.innerText = `Rated ${data.Rated}`
+    let released = document.getElementById("date")
+    released.innerText = `Date :${data.Released}`
+    release.append(year,rated,released)
+
+    let imdb = document.getElementById("imdbrating")
+    imdb.innerText = `IMDB Rating : ${data.imdbRating}`
+
+    let genre = document.getElementById("genre")
+    genre.innerText = `Genre     : ${data.Genre}`
+
+    let actors = document.getElementById("actors")
+    actors.innerText = `Actors     : ${data.Actors}`
+
+    let director = document.getElementById("director")
+    director.innerText = `Director    : ${data.Director}`
+
+    let writer = document.getElementById("writer")
+    writer.innerText = `Writer     : ${data.Writer}`
+
+    let plot = document.getElementById("plot")
+    plot.innerText = `plot    : ${data.Plot}`
+
+    let lang = document.getElementById("lang")
+    lang.innerText = `Language   : ${data.Language}`
+
+    let country = document.getElementById("country")
+    country.innerText = `Country   : ${data.Country}`
+   
+    let run = document.getElementById("runtime")
+    run.innerText = `Run time : ${data.Runtime}`
+
+    
+    let img = document.createElement("img")
+    img.src = data.Poster
+   
+    img.style.width = "100%"
+    img.style.height = "100%"
+    poster.append(img)
+    info.append(name,release,imdb,genre,actors,director,writer,plot,lang,country,run)
+    container.append(info,poster)
+
+}
+   
 </script>

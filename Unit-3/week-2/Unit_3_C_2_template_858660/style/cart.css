@@ -1,0 +1,26 @@
+#total-div{
+    border: 1px solid;
+    width: 80%;
+    margin: auto;
+}
+#cart{
+    border: 1px solid;
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 20px;
+
+}
+#box{
+    border: 1px solid;
+    width: 80%;
+    margin: auto;
+}
+#remove{
+    padding: 10px 20px;
+    display: block;
+    margin: auto;
+}

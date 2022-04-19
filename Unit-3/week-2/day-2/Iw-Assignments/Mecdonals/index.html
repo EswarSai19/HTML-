@@ -100,7 +100,9 @@
     function orderFood(){
        for(let key in ord){
             if(ord[key] == true){
-                 displayItems(key)
+                  displayItems(key)
+                  displayItems(key)
+                  
             }
         }    
               function displayItems(order){
@@ -112,7 +114,7 @@
                             }else{
                                 reject()
                             }
-                        },5000)
+                        },3000)
                     })
                         myPromise.then(function(res){
                             console.log(res)

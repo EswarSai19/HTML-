@@ -1,0 +1,41 @@
+#navbar{
+    width: 85%;
+    height: auto;
+    display: flex;
+    margin: auto;
+    align-self: center;
+    justify-content: right;
+    padding: 10px 20px;
+    
+}
+#navbar>div{
+    margin-right: 20px;
+    font-size: 20px;
+    
+   
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#items{
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    padding: 20px;
+}
+#box{
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#add_to_cart{
+    padding: 10px 20px;
+    display: block;
+    margin: auto;
+   
+}
