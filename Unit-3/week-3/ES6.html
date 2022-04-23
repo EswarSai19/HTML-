@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+    <style>
+        #dispVideos{
+            display: grid;
+            grid-template-columns:  repeat(4,1fr);
+            gap: 5%;
+        }
+    </style>
+</head>
+<body>
+    <h1>You Tube</h1>
+    <input type="text" id="query">
+    <button onclick="searchVideos()">Search</button>
+    <div id="dispVideos"></div>
+</body>
+</html>
+<!-- <iframe
+         width="560" 
+         height="315" 
+         src="https://www.youtube.com/embed/2NrpwkyoTrI" 
+         title="YouTube video player" 
+         frameborder="0" 
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+         allowfullscreen>
+    </iframe> -->
+<script>
+    //  https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=fast%20and%20furious%209&key=[YOUR_API_KEY] 
+
+   const API =  "AIzaSyCVQKfk8tNWMzn2Fo0yoJFaoALjkWgqO2w"
+
+    const searchVideos = async() =>{
+        try{
+            let q = document.getElementById("query").value
+            const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=${q}&key=${API}`)
+            const data = await res.json()
+            console.log(data.items);
+            append(data.items)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    const append = (videos) =>{
+        let show_videos = document.getElementById("dispVideos")
+        show_videos.innerText = null
+        videos.forEach(({id :{videoId},snippet :{title}})=>{
+            let div = document.createElement("div")
+            let iframe = document.createElement("iframe")
+            iframe.src = `https://www.youtube.com/embed/${videoId}`
+            iframe.width = "100%"
+            iframe.height = "200px"
+            iframe.allow = "fullscreen"
+            let name = document.createElement("h4")
+            name.innerText = title
+            div.append(iframe,title)
+            show_videos.append(div)
+            
+            let data = {
+                title,
+                videoId,
+            }
+            div.onclick = () =>{
+                showVideo(data)
+            }
+        })
+    }
+
+    const  showVideo = (data)=>{
+        window.location.href = "./ES6Video.html"
+        localStorage.setItem("video",JSON.stringify(data))
+    }
+
+
+</script>

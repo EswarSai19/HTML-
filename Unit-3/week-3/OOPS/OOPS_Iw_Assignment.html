@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Oriented Programming</title>
+</head>
+<body>
+    <h1>Object Oriented Programming</h1>
+</body>
+</html>
+<script>
+    // problem-1
+    // Inheritance model of family 
+    class Parents{
+        constructor(sn,bg,){
+            this.Surname = sn;
+            this.bloodGroup = bg;
+
+        }
+    }
+    let par = new Parents("Yandrapu","O+")
+    console.log('par:', par)
+
+    class Myself extends Parents{
+        constructor(sn,bg,name){
+            super(sn,bg)
+            this.myName = name
+        }
+    }
+
+    let myself = new Myself("Yandrapu","O+","Eswar")
+    console.log('myself:', myself)
+
+ class MySis extends Myself{
+        constructor(sn,bg,name,status){
+            super(sn,bg,name)
+            this.married = status
+        }
+    }
+
+    let mysis = new MySis("Seelam","O+","Tulasi",true)
+    console.log('mysis:', mysis)
+
+     // Inheritance model of cat 
+
+     class Cat{
+         constructor(legs,claws,fur){
+             this.legs = legs;
+             this.claws = claws;
+             this.fur = fur;
+         }
+     }
+     let cat = new Cat(4,true,true)
+     console.log('cat:', cat)
+
+     class Tiger extends Cat{
+         constructor(legs,claws,fur,size){
+             super(legs,claws,fur)
+             this.size = size
+         }
+     }
+     let tiger = new Tiger(4,true,true,"big")
+     console.log('tiger:', tiger)
+
+
+     class Cheetah extends Tiger{
+         constructor(legs,claws,fur,size,speed){
+             super(legs,claws,fur,size)
+             this.speed = speed
+         }
+     }
+     let cheetah = new Cheetah(4,true,true,"medium","90 KMPH")
+     console.log('cheetah:', cheetah)
+
+
+
+    //  Problem -2
+    //  Encapsulation, getter, setter
+
+    class User{
+        constructor(){
+            let name;
+            let age;
+            let num;
+        }
+        setname(name){
+            this.name = name;
+        }
+        setage(age){
+            this.age = age;
+        }
+        setnum(num){
+            this.num = num;
+        }
+        getname(){
+            return this.name
+        }
+        getage(){
+            return this.age
+        }
+        getnum(){
+            return this.num
+        }
+    }
+    let u1 = new User()
+    u1.setname("Eswar")
+    u1.setage(26)
+    u1.setnum(9874563210)
+    console.log(u1.getname());
+    console.log(u1.getage());
+    console.log(u1.getnum());
+
+
+
+    // Problem-3
+    // Abstraction
+
+    class tiffinCenter{
+        constructor(n,c){
+            this.name = n;
+            this.city = c;
+            this.variety = []
+        }
+        freshItems(type){
+            this.variety.push(type)
+        }
+
+    }
+    let cus1 = new tiffinCenter("Balagi Tiffin Center","Vijayawada")
+    cus1.freshItems("Idly")
+    cus1.freshItems("Dosa")
+    cus1.freshItems("Chapathi")
+    cus1.freshItems("Parota")
+    cus1.freshItems("Vada")
+    console.log(cus1);
+
+
+
+    // problem-4
+    // Polymorphism
+
+
+    class Party{
+        situation(){
+            console.log("Lets get a treat");
+        }
+    }
+    class moreMoney extends Party{
+        situation(){
+            console.log("Lets eat biriyani")
+        }
+    } 
+    class lessMoney extends Party{
+        situation(){
+            console.log("Lets eat pani puri");
+        }
+    }
+
+    let p1 = new Party()
+    let p2 = new moreMoney()
+    let p3 = new lessMoney()
+
+    p1.situation()
+    p2.situation()
+    p3.situation()
+</script>

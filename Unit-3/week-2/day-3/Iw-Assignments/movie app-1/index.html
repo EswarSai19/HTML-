@@ -6,34 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie API-1</title>
     <style>
+        #movieApp{
+           text-align: center;
+        }
         #searchBar{
-            border: 1px solid ;
+            border: 2px solid red;
             width: 50%;
             height: 30px;
             display: flex;
             margin: auto;
+            margin-top: 40px;
             border-radius: 10px;
         }
         input{
             width: 100%;
-            border-radius: 10px;
+            border: transparent;
+            border-radius: 10px 0px 0px 10px;
+            border-color: transparent;
+        }
+        #search{
+            background-color: red;
+            color: white;
+            border-radius: 0px 8px 8px 0px;
+            border-color: transparent;
+            font-size: 18px;
         }
         #container{
-            border: 1px solid;
             width: 85%;
             margin: auto;
-            margin-top: 100px;
             display: flex;
             align-items: center;
             padding: 20px;
         }
         #info{
-            border: 1px solid;
             width: 60%;
             height: 100%;
             margin: auto;
-            
-            /* box-sizing: border-box; */
         }
         h2{
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -43,7 +51,6 @@
             line-height: 15px;
         }
         #poster{
-            border: 1px solid;
             width: 38%;
             height: 500px;
             
@@ -63,165 +70,160 @@
             font-size: 20px;
             color: green;
         }
-        #info>p:nth-child(8){
+        #info>p:nth-child(9){
             width: 80%;
             height: auto;
             line-height: 20px;
         }
-
+        #notFound{
+            width: 85%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        
+       
 
     </style>
 </head>
 <body>
+    
+    <h1 id="movieApp">Movie App</h1>
     <div id="searchBar">
         <input type="text" id="movie_name" placeholder="Search for Movies,Shows,Web Series..." >
         <button id="search" onclick="searchFun()">Search</button>
     </div>
+    <div id="notFound"></div>
     <div id="container">
-        <div id="info">
-            <h2 id="title"></h2>
-            <div id="rel_date">
-                <p id="year"></p>
-                <div id="rated"></div>
-                <p id="date"></p>
-            </div>
-            <p id="imdbrating"></p>
-            <p id="genre"></p>
-            <p id="actors"></p>
-            <p id="director"></p>
-            <p id="writer"></p>
-            <p id="plot"></p>
-            <p id="lang"></p>
-            <p id="country"></p>
-            <p id="runtime"></p>
-        </div>
+        <div id="info"></div>
         <div id="poster"></div>
     </div>
 </body>
 </html>
 <script>
-    let moviesArr = [
-    {
-        "Title":"Guardians of the Galaxy",
-        "Year":"2014",
-        "Rated":"PG-13",
-        "Released":"01 Aug 2014",
-        "Runtime":"121 min",
-        "Genre":"Action, Adventure, Comedy",
-        "Director":"James Gunn",
-        "Writer":"James Gunn, Nicole Perlman, Dan Abnett",
-        "Actors":"Chris Pratt, Vin Diesel, Bradley Cooper",
-        "Plot":"A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.",
-        "Language":"English",
-        "Country":"United States",
-        "Awards":"Nominated for 2 Oscars. 52 wins & 102 nominations total",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BMTAwMjU5OTgxNjZeQTJeQWpwZ15BbWU4MDUxNDYxODEx._V1_SX300.jpg",
-        "imdbRating":"8.1",
-        "BoxOffice":"$333,718,600",
-    },
-    {
-        "Title":"Avatar",
-        "Year":"2009",
-        "Rated":"PG-13",
-        "Released":"18 Dec 2009",
-        "Runtime":"162 min",
-        "Genre":"Action, Adventure, Fantasy",
-        "Director":"James Cameron",
-        "Writer":"James Cameron",
-        "Actors":"Sam Worthington, Zoe Saldana, Sigourney Weaver",
-        "Plot":"A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
-        "Language":"English, Spanish",
-        "Country":"United States",
-        "Awards":"Won 3 Oscars. 89 wins & 131 nominations total",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
-        "imdbRating":"7.9",
-        "BoxOffice":"$760,507,625",
-    }
-]
+   
 
+let container = document.getElementById("container")
+let notFound = document.getElementById("notFound")
+let info = document.getElementById("info")
+let poster = document.getElementById("poster")
+let data;
 function searchFun(){
     let movie = document.getElementById("movie_name").value
-    const url = `http://www.omdbapi.com/?t=${movie}&apikey=41c4974c&`
+    const url = `https://www.omdbapi.com/?t=${movie}&apikey=41c4974c&`
     fetch(url)
     .then(function(res){
         return res.json()
     })
     .then(function(res){
-        console.log(res.Response)
-        if(res.Response == false){
-        let container = document.getElementById("container")
-        container.value = ""
+        // console.log(res)
+        if(res.Response == "False"){
+        
+    //    window.location.reload()
+        info.innerText = ""
+        poster.innerText = ""
+        notFound.innerHTML = null
+        
         let img = document.createElement("img")
         img.src = "./Screenshot 2022-04-17 183617.png"
-        container.append(img)
+        img.style.width = "100%"
+        
+        notFound.append(img)
         }
         else{
-            appendData(res)
+           data = res
+           console.log("new",data);
+           appendData(data)
         }
-        console.log(res)
+        // console.log(res)
     })
     .catch(function(err){
-        console.log(err)
-       
-       
+        console.log(err) 
     })
 
 }
 
-function appendData(data){
-    let container = document.getElementById("container")
-    container.value = ""
-    let poster = document.getElementById("poster")
-    poster.innerText = ""
-    let info = document.getElementById("info")
 
-    let name = document.getElementById("title")
+function appendData(data){
+    // console.log(data);
+    container.value = ""
+    notFound.innerHTML = null
+   
+    poster.innerText = ""
+
+    
+    info.innerText = null
+    
+    let name = document.createElement("h2")
+    name.id = "title"
     name.innerText = data.Title
     
-    let release = document.getElementById("rel_date")
-    let year = document.getElementById("year")
+    let release = document.createElement("div")
+    release.id = "rel_date"
+    let year = document.createElement("p")
+    year.id = "year"
     year.innerText = `Year :${data.Year}`
-    let rated = document.getElementById("rated")
+    let rated = document.createElement("div")
+    rated.id = "rated"
     rated.innerText = `Rated ${data.Rated}`
-    let released = document.getElementById("date")
+    let released = document.createElement("p")
+    released.id = "date"
     released.innerText = `Date :${data.Released}`
     release.append(year,rated,released)
 
-    let imdb = document.getElementById("imdbrating")
+    let imdb = document.createElement("p")
+    imdb.id = "imdbrating"
     imdb.innerText = `IMDB Rating : ${data.imdbRating}`
+   
+    
 
-    let genre = document.getElementById("genre")
-    genre.innerText = `Genre     : ${data.Genre}`
+    let genre = document.createElement("p")
+    genre.id = "genre"
+    genre.innerText = `Genre : ${data.Genre}`
 
-    let actors = document.getElementById("actors")
+    let actors = document.createElement("p")
+    actors.id = "actors"
     actors.innerText = `Actors     : ${data.Actors}`
 
-    let director = document.getElementById("director")
+    let director = document.createElement("p")
+    director.id = "director"
     director.innerText = `Director    : ${data.Director}`
 
-    let writer = document.getElementById("writer")
+    let writer = document.createElement("p")
+    writer.id = "writer"
     writer.innerText = `Writer     : ${data.Writer}`
 
-    let plot = document.getElementById("plot")
+    let plot = document.createElement("p")
+    plot.id = "plot"
     plot.innerText = `plot    : ${data.Plot}`
 
-    let lang = document.getElementById("lang")
+    let lang = document.createElement("p")
+    lang.id = "lang"
     lang.innerText = `Language   : ${data.Language}`
 
-    let country = document.getElementById("country")
+    let country = document.createElement("p")
+    country.id = "country"
     country.innerText = `Country   : ${data.Country}`
    
-    let run = document.getElementById("runtime")
+    let run = document.createElement("p")
+    run.id = "runtime"
     run.innerText = `Run time : ${data.Runtime}`
 
     
     let img = document.createElement("img")
     img.src = data.Poster
-   
     img.style.width = "100%"
     img.style.height = "100%"
     poster.append(img)
-    info.append(name,release,imdb,genre,actors,director,writer,plot,lang,country,run)
+
+    let rec = document.createElement("p")
+    if(+data.imdbRating > 8.5){
+        rec.innerText = "Recommended"
+        rec.style.color = "red"
+    }else{
+        rec.innerText = ""
+    }
+    
+    info.append(name,release,imdb,rec,genre,actors,director,writer,plot,lang,country,run)
     container.append(info,poster)
 
 }

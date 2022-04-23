@@ -5,8 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/4dbaa63c16.js" crossorigin="anonymous"></script>
+    
     <title>Fetch</title>
     <style>
+        h1{
+            text-align: center;
+            margin-bottom: 40px;
+        }
         #searchBar{
             height: 40px;
             width: 30%;
@@ -15,14 +20,12 @@
             border: 2px solid rgb(186, 75, 75);
             align-items: center;
             box-sizing: border-box;
-            border-radius: 10px;
-            /* border-color: yellow; */
+            border-radius: 10px ;
         }
         #search{
-            border: 1px solid;
             padding: 8px 15px;
             
-            border-radius: 10px;
+            border-radius: 0px 10px 10px 0px;
             border-color: transparent;
             background-color: rgb(186, 75, 75);
         }
@@ -32,7 +35,7 @@
         input{
             width: 100%;
             height: 80%;
-            border-radius: 10px;
+            border-radius: 10px 0px 0px 10px;
             border-color: transparent;
         }
         .mapouter{
@@ -48,31 +51,38 @@
             width:600px;
         }
         #map{
-            border: 1px solid;
             width: 60%;
             padding: 20px;
             margin: auto;
         }
         #container{
             display: flex;
-            border: 1px solid;
             
             width: 80%;
             margin: auto;
             margin-top: 40px;
         }
         #details{
-            border: 1px solid;
             width: 30%;
             padding: 20px;
         }
-
+        #box1,#box2,#box3,#box4,#box5,#box6,#box7{
+            display: flex;
+            align-items: center;
+           
+        }
+        #details p{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
     </style>
 </head>
 <body>
+    <h1>Weather Report</h1>
     <div id="searchBar">
         <input type="text" placeholder="Enter City Name" id="city">
-        <div id="search" onclick="getData()"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div id="search" onclick="getData(),getInfo()"><i class="fa-solid fa-magnifying-glass"></i></div>
     </div>
     <div id="container">
         <div id="details">
@@ -80,8 +90,11 @@
             <p id="min_temp"></p>
             <p id="max_temp"></p>
             <p id="wind"></p>
-            <p id="humidity"></p>
+            <p id="hum"></p>
+            <p id="sunrise"></p>
+            <p id="sunset"></p>
         </div>
+
         <div id="map">
             <div class="mapouter">
                 <div class="gmap_canvas">
@@ -99,6 +112,7 @@
             </div>
         </div>
     </div>
+    <div id="forecast"></div>
    
 </body>
 </html>
@@ -120,21 +134,126 @@
         .catch(function(err){
             console.log(err)
         })
+
+
+       
     } 
+
+    function getInfo(){
+        let city = document.getElementById("city").value
+        const foreUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=e4e6da26e5946c83e3edf2487b7257b6`;
+        fetch(foreUrl)
+        .then(function(res){
+            return res.json()
+        })
+        .then(function(res){
+            console.log(res.list)
+            appendForecast(res.list)
+            
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    }
+
+
+    function appendForecast(data){
+        let arr = data[0].dt_txt.split(" ")
+        console.log(calander(arr))
+       
+    }
 
     function appendData(data){
         console.log(data.name);
-        let container = document.getElementById("details")
+        let details = document.getElementById("details")
+
+        let div1 = document.createElement("div")
+        div1.id = "box1"
         let area = document.getElementById("area")
         let area_i = document.createElement("i")
-        area_i.class = "fa-solid fa-city"
-        area.innerText = `City Name : ${data.name}`
-        console.log(area)
-        area.append(area_i)
-        container.append(area)
+        area_i.className = "fa-solid fa-city"
+        area.innerText = `City : ${data.name}`
+        div1.append(area,area_i)
+        
+        let div2 = document.createElement("div")
+        div2.id = "box2"
+        let min_temp = document.getElementById("min_temp")
+        let min_temp_i = document.createElement("i")
+        min_temp_i.className = "fa-solid fa-temperature-arrow-down"
+        min_temp.innerText = `Min_Temp : ${data.main.temp_min} K`
+        div2.append(min_temp,min_temp_i)
+
+        let div3 = document.createElement("div")
+        div3.id = "box3"
+        let max_temp = document.getElementById("max_temp")
+        let max_temp_i = document.createElement("i")
+        max_temp_i.className = "fa-solid fa-temperature-arrow-up"
+        max_temp.innerText = `Max_Temp : ${data.main.temp_max} K`
+        div3.append(max_temp,max_temp_i)
+
+        let div4 = document.createElement("div")
+        div4.id = "box4"
+        let wind = document.getElementById("wind")
+        let wind_i = document.createElement("i")
+        wind_i.className = "fa-solid fa-wind"
+        wind.innerText = `Wind : ${data.wind.speed} Km/Hr`
+        div4.append(wind,wind_i)
+
+        let div5 = document.createElement("div")
+        div5.id = "box5"
+        let hum = document.getElementById("hum")
+        let hum_i = document.createElement("i")
+        hum_i.className = "fa-solid fa-droplet"
+        hum.innerText = `Humidity : ${data.main.humidity} %`
+        div5.append(hum,hum_i)
+
+        let div6 = document.createElement("div")
+        div6.id = "box6"
+        let sunrise = document.getElementById("sunrise")
+        let sunrise_i = document.createElement("i")
+        sunrise_i.className = "fa-solid fa-mountain-sun"
+        sunrise.innerText = `Sunrise : 5:49 AM`
+        div6.append(sunrise,sunrise_i)
+
+        let div7 = document.createElement("div")
+        div7.id = "box7"
+        let sunset = document.getElementById("sunset")
+        let sunset_i = document.createElement("i")
+        sunset_i.className = "fa-solid fa-mountain-sun"
+        sunset.innerText = `Sunset : 6:27 PM`
+        div7.append(sunset,sunset_i)
+
+        details.append(div1,div2,div3,div4,div5,div6,div7)
+
         let map = document.getElementById("gmap_canvas")
         map.src = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
         document.getElementById("gmap_canvas").append(map)
+    }
+
+    function calander(arr){
+        let x;
+        
+        arr = arr[0].split("-").map(Number)
+        if(arr[0]==2022){x=5}
+        if(arr[1]==4){x+=6}
+        if(arr[1]==5){x+=1}
+        if(arr[1]==6){x+=4}
+        if(arr[1]==7){x+=6}
+        if(arr[1]==8){x+=2}
+        if(arr[1]==9){x+=5}
+        if(arr[1]==10){x+=0}
+        if(arr[1]==11){x+=3}
+        if(arr[1]==12){x+=5}
+        let y = arr[2]%7
+        x=x+y
+        x = x%7
+        if(x==0){return "Sunday"}
+        if(x==1){return "Monday"}
+        if(x==2){return "Tuesday"}
+        if(x==3){return "Wednesday"}
+        if(x==4){return "Thursday"}
+        if(x==5){return "Friday"}
+        if(x==6){return "Saturday"}
     }
     
 </script>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Oriented Programming</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // class Car{
+    //     constructor(n,b){
+    //         this.name = n,
+    //         this.brand = b
+    //     }
+    // }
+
+    // let c1 = new Car('Duster','Renault')
+    // console.log(c1);
+
+    // class sedan extends Car{
+    //     constructor(n,b){
+    //         super(n,b)
+    //         this.sunroof = true
+    //     }
+    // }
+
+    // let s1 = new sedan('vernon','Hyundai')
+    // console.log(s1);
+
+    // class ElectricalSedan extends sedan{
+    //     constructor(n,b,value){
+    //         super(n,b)
+    //         this.electric = value
+    //     }
+    // }
+    // let e1 = new ElectricalSedan('E20',"benz",true)
+    // console.log(e1);
+
+
+
+
+   // Encapsulation, getter, setter
+
+//    class Employee{
+//        constructor(){
+//            let name;
+//            let rating;
+//        }
+//        setName(n){
+//            this.name = n;
+//        }
+//        setrate(r){
+//         this.rating = r;
+//        }
+//        getName(){
+//            return this.name;
+//        }
+//        getRate(){
+//         return this.rating;
+//        }
+//    }
+
+//    let e1 = new Employee()
+//    e1.setName("eswar")
+//    e1.setrate("10")
+//    console.log(e1.getName());
+//    console.log(e1.getRate());
+
+
+
+// Abstraction
+
+// class Employee{
+//     constructor(n,r){
+//         this.name = n
+//         this.rating = r
+//         this.skills = []
+//     }
+//     learnSkills(skill){
+//         this.skills.push(skill)
+//     }
+// }
+
+// let e1 = new Employee("eswar",10)
+// e1.learnSkills("Coding")
+// console.log(e1);
+
+
+// Polymorphism
+
+class Vehicle{
+    run(){
+        console.log("Vehicle is running");
+    }
+}
+class Car extends Vehicle{
+    run(){
+        console.log("Car is running");
+    }
+}
+class Truck extends Car{
+    run(){
+        console.log("Truck is running");
+    }
+}
+let v1 = new Vehicle
+let v2 = new Car
+let v3 = new Truck
+
+v3.run()
+
+
+</script>
