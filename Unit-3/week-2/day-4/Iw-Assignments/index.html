@@ -11,6 +11,7 @@
         h1{
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 20px;
         }
         #searchBar{
             height: 40px;
@@ -69,13 +70,31 @@
         #box1,#box2,#box3,#box4,#box5,#box6,#box7{
             display: flex;
             align-items: center;
-           
         }
         #details p{
             margin-right: 10px;
             font-size: 20px;
         }
+
+        #forecast{
+            display: flex;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
         
+        #foreDiv{
+            margin: auto;
+            margin-left: 20px;
+            text-align: center;
+        }
+        #foreDiv i{
+            font-size: 40px;
+            margin: auto;
+        }
+        #area{
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +105,7 @@
     </div>
     <div id="container">
         <div id="details">
-            <p id="area"></p>
+            <p id="area"></p>  
             <p id="min_temp"></p>
             <p id="max_temp"></p>
             <p id="wind"></p>
@@ -112,13 +131,23 @@
             </div>
         </div>
     </div>
+    <h1>Fore Cast Data</h1>
     <div id="forecast"></div>
    
 </body>
 </html>
 <script>
 
-    
+    let details = document.getElementById("details")
+    let container = document.getElementById("container")
+    let area_i = document.createElement("i")
+    let min_temp_i = document.createElement("i")
+    let max_temp_i = document.createElement("i")
+    let wind_i = document.createElement("i")
+    let hum_i = document.createElement("i")
+    let sunrise_i = document.createElement("i")
+    let sunset_i = document.createElement("i")
+       
     function getData(){
         let city = document.getElementById("city").value
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e4e6da26e5946c83e3edf2487b7257b6`;
@@ -128,15 +157,21 @@
         })
         .then(function(res){
             console.log(res)
+            container.value = ""
+              area_i.className = ""
+              min_temp_i.className = ""
+              max_temp_i.className = ""
+              wind_i.className = ""
+              hum_i.className = ""
+              sunrise_i.className = ""
+             sunset_i.className = ""
             appendData(res)
             
         })
         .catch(function(err){
             console.log(err)
         })
-
-
-       
+ 
     } 
 
     function getInfo(){
@@ -158,19 +193,40 @@
 
 
     function appendForecast(data){
+        let forecast = document.getElementById("forecast")
+        forecast.innerText = ""
         let arr = data[0].dt_txt.split(" ")
-        console.log(calander(arr))
+        let x =  calander(arr)
+        let y = days(x)
+        console.log(y);
+        for(let i=0; i<8; i++){
+            let foreDiv = document.createElement("div")
+            foreDiv.innerText = ""
+            foreDiv.id = "foreDiv"
+            let day = document.createElement("p")
+            day.style.fontSize = "20px"
+            day.innerText = days(x++)
+            let icon = document.createElement("i")
+            icon.className = "fa-solid fa-sun"
+            let min = document.createElement("p")
+            let temp = Math.floor((+data[i].main.temp_min) - 286)
+            min.innerText =  `${temp} °C`
+            let max = document.createElement("p")
+            temp = Math.ceil((+data[i].main.temp_max) - 273)
+            max.innerText =  `${temp} °C`
+            
+            foreDiv.append(day,icon,max,min)
+            forecast.append(foreDiv)
+        }
        
     }
 
     function appendData(data){
         console.log(data.name);
-        let details = document.getElementById("details")
-
+        
         let div1 = document.createElement("div")
         div1.id = "box1"
         let area = document.getElementById("area")
-        let area_i = document.createElement("i")
         area_i.className = "fa-solid fa-city"
         area.innerText = `City : ${data.name}`
         div1.append(area,area_i)
@@ -178,23 +234,20 @@
         let div2 = document.createElement("div")
         div2.id = "box2"
         let min_temp = document.getElementById("min_temp")
-        let min_temp_i = document.createElement("i")
         min_temp_i.className = "fa-solid fa-temperature-arrow-down"
-        min_temp.innerText = `Min_Temp : ${data.main.temp_min} K`
+        min_temp.innerText = `Min_Temp : ${Math.floor((+data.main.temp_min)-273)} °C`
         div2.append(min_temp,min_temp_i)
 
         let div3 = document.createElement("div")
         div3.id = "box3"
         let max_temp = document.getElementById("max_temp")
-        let max_temp_i = document.createElement("i")
         max_temp_i.className = "fa-solid fa-temperature-arrow-up"
-        max_temp.innerText = `Max_Temp : ${data.main.temp_max} K`
+        max_temp.innerText = `Max_Temp : ${Math.ceil((+data.main.temp_max)-273)} °C`
         div3.append(max_temp,max_temp_i)
 
         let div4 = document.createElement("div")
         div4.id = "box4"
         let wind = document.getElementById("wind")
-        let wind_i = document.createElement("i")
         wind_i.className = "fa-solid fa-wind"
         wind.innerText = `Wind : ${data.wind.speed} Km/Hr`
         div4.append(wind,wind_i)
@@ -202,7 +255,6 @@
         let div5 = document.createElement("div")
         div5.id = "box5"
         let hum = document.getElementById("hum")
-        let hum_i = document.createElement("i")
         hum_i.className = "fa-solid fa-droplet"
         hum.innerText = `Humidity : ${data.main.humidity} %`
         div5.append(hum,hum_i)
@@ -210,7 +262,6 @@
         let div6 = document.createElement("div")
         div6.id = "box6"
         let sunrise = document.getElementById("sunrise")
-        let sunrise_i = document.createElement("i")
         sunrise_i.className = "fa-solid fa-mountain-sun"
         sunrise.innerText = `Sunrise : 5:49 AM`
         div6.append(sunrise,sunrise_i)
@@ -218,7 +269,6 @@
         let div7 = document.createElement("div")
         div7.id = "box7"
         let sunset = document.getElementById("sunset")
-        let sunset_i = document.createElement("i")
         sunset_i.className = "fa-solid fa-mountain-sun"
         sunset.innerText = `Sunset : 6:27 PM`
         div7.append(sunset,sunset_i)
@@ -247,6 +297,12 @@
         let y = arr[2]%7
         x=x+y
         x = x%7
+       return x
+    }
+    function days(x){
+        if(x>=7){
+            x = x%7
+        }
         if(x==0){return "Sunday"}
         if(x==1){return "Monday"}
         if(x==2){return "Tuesday"}

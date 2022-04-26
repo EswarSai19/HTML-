@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4dbaa63c16.js" crossorigin="anonymous"></script>
+    <title>You Tube</title>
+    <style>
+        *{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #navBar{
+            display: flex;
+            align-items: center;
+            width: 96%;
+            height: 40px;
+            padding: 0px 5px;
+            margin: auto;
+        }
+        #searchDiv{
+            display: flex;
+            align-items: center;
+            border: 1px solid;
+            width: 50%;
+            height: 35px;
+        }
+        #input{
+            height: 90%;
+            width: 550px;
+            font-size: 20px;
+            border-color: none;
+        }
+        .logo{
+            height: 40px;
+            width: 80px;
+            margin-right: 150px;
+        }
+        .menu{
+            font-size: 20px;
+            margin-right: 20px;
+        }
+        .search{
+            font-size: 20px;
+        }
+        #sBut{
+            width: 80px;
+            height: 34px;
+            border: none;
+        }
+        .mic{
+            font-size: 20px;
+            margin-left: 30px;
+            margin-right: 100px;
+        }
+        .vid, .grid, .bell, .user{
+            font-size: 20px;
+            margin-right: 30px;
+        }
+        #container{
+            display: flex;
+            height: 480px;
+        }
+        #accesories{
+            display: inline-block;
+            /* width: 80px; */
+            margin-bottom: 20px;
+        }
+        #accesories i{
+            font-size: 20px;
+            margin-left: 25px;
+        }
+        #accesories div{
+            display: block;
+           margin-top: 20px;
+        }
+        #accesories p{
+            font-size: 12px;
+            text-align: center;
+        }
+        #intrests{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            margin-top: 20px;
+        }
+        #intrests div{
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 50px;
+            text-align: center;
+            height: 20px;
+            width: auto;
+            font-size: 15px;
+            margin-left: 20px;
+            background-color: #f2f2f2;
+        }
+        .all{
+            color: white;
+            background-color: black;
+        }
+        .arrow{
+            margin-left: 30px;
+        }
+        #intrests >:nth-child(1){
+            background-color: black;
+        }
+        #intrests >:last-child{
+           margin-left: 60px;
+        }
+        #joint_box{
+            width: 100%;
+        }
+       
+        #videos{
+            height:400px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            padding: 20px;
+            overflow :hidden scroll;
+            box-sizing: border-box;
+           
+            
+        }
+       
+        body{
+            overflow :hidden scroll;
+        }
+       #vidDiv{
+        padding: 10px;
+       }
+        #vidDiv:hover{
+            cursor: pointer;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        h4{
+            width: 100%;
+            height: 45px;
+            overflow: hidden;
+        }
+       
+    </style>
+</head>
+<body>
+    <div id="navBar">
+        <i class="fa-solid fa-bars menu"></i>
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo-2017-present.jpg" alt="" class="logo">
+        <div id="searchDiv">
+            <input placeholder="Search" id="input" type="text"><span><button onclick="searchVideos()" id="sBut"><i class="fa-solid fa-magnifying-glass search"></i></button></span>
+        </div>
+        <div><i class="fa-solid fa-microphone mic"></i></div>
+        <div><i class="fa-solid fa-video vid"></i></div>
+        <div><i class="fa-solid fa-grip grid"></i></div>
+        <div><i class="fa-solid fa-bell bell"></i></div>
+        <div><i class="fa-solid fa-user user"></i></div>
+    </div>
+   <div id="container">
+        <div id="accesories">
+            <div id="home">
+                <i class="fa-solid fa-house"></i>
+                <p>Home</p>
+            </div>
+            <div id="exp">
+                <i class="fa-solid fa-compass"></i>
+                <p>Explore</p>
+            </div>
+            <div id="shorts">
+                <i class="fa-solid fa-play"></i>
+                <p>Shorts</p>
+            </div>
+            <div id="sub">
+                <i class="fa-solid fa-clapperboard"></i>
+                <p>Subscriptions</p>
+            </div>
+            <div id="lib">
+                <i class="fa-solid fa-book-open"></i>
+                <p>Library</p>
+            </div>
+        </div>
+            <div id="joint_box">
+                <div id="intrests">
+                    <div class="all">All</div>
+                    <div>Live</div>
+                    <div>Mixes</div>
+                    <div>T-Series</div>
+                    <div>Chess</div>
+                    <div>Prabhas</div>
+                    <div>Music</div>
+                    <div>Anirudh Ravichander</div>
+                    <div>Yash</div>
+                    <div>Computer Programming</div>
+                    <div>Movies</div>
+                    <div class="arrow"><i class="fa-solid fa-angle-right"></i></div>
+                </div>
+                <div id="videos">
+                    
+                </div>
+            </div>
+   </div>
+</body>
+</html>
+<script>
+    
+//   'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=most%20popular%20videos%20in%20india&key=[YOUR_API_KEY]' \
+ 
+
+    // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${}&key=${API} 
+    
+   
+  
+
+
+const API = `AIzaSyAeA3cwS_4-n1J62VJoYCuBJ-x0W1wPXTw`
+window.addEventListener("load",()=>{
+    mostPop()
+})
+
+ const mostPop = async()=>{
+     try{
+        const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=most%20famous%20videos%20in%20india&key=${API}`)
+        const data = await res.json()
+        console.log(data.items)
+        appendData(data.items)
+     }catch(err){
+         console.log(err);
+     }
+ }
+
+
+const searchVideos = async() =>{
+    try{
+    let q = document.getElementById("input").value
+    const res = await fetch(` https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${q}&key=${API} `)
+    const data = await res.json()
+    console.log(data.items);
+        appendData(data.items)
+    }catch(err){
+        console.log(err);
+    }
+}
+
+const appendData = (videos) =>{
+
+    let show_videos = document.getElementById("videos")
+    show_videos.innerText = ""
+    videos.forEach(({id:{videoId},snippet:{thumbnails:{medium}},snippet:{title}})=>{
+        console.log(medium.url);
+        let div = document.createElement("div")
+        div.id = "vidDiv"
+        let iframe = document.createElement("img")
+        iframe.id = "iframe"
+        iframe.src = `${medium.url}`
+        // https://www.youtube.com/embed/${videoId}
+        iframe.style.width = "274px"
+        iframe.style.height = "154px"
+        // iframe.allow = "fullscreen"
+        // iframe.frameBorder = "0"
+        // iframe.scrolling = 'NO'
+        // iframeDiv.append(iframe)
+        let name = document.createElement("h4")
+        name.innerText = title
+        div.append(iframe,name)
+        show_videos.append(div)
+
+        let data = {
+            videoId,
+            title,
+        }
+        div.onclick = ()=>{
+            showData(data)
+        }
+    })
+
+}
+
+const showData = (data) =>{
+    window.location.href = "./videoPage.html"
+    localStorage.setItem("video",JSON.stringify(data))
+}
+
+</script>

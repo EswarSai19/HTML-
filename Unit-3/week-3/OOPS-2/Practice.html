@@ -28,7 +28,7 @@
 <body>
     <div id="container">
         <div id="input">
-            <button onclick="Translate()" >Translate</button>
+            <button oninput="debounce(Translate,1000)" >Translate</button>
             <textarea name="input-text" id="input-text" ></textarea>
         </div>
         <div id="output">
@@ -39,6 +39,7 @@
 </html>
 <script>
 
+    let id;
     function read(id){
         return document.getElementById(id).value
     }
@@ -68,5 +69,15 @@
         }catch(err){
             console.log(err);
         }
+    }
+
+    function debounce(func,delay){
+        if(id){
+            clearTimeout(id)
+        }
+        id = setTimeout(()=>{
+            func()
+        },delay)
+
     }
 </script>
