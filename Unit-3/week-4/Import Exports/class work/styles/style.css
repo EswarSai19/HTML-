@@ -1,0 +1,15 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+#cat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#cat>div{
+    margin-right: 20px;
+}

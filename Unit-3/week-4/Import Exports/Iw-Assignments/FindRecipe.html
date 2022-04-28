@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Find Recipe</title>
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Welcome to Food Court</h1>
+    <h2 id="findRes">Find Recipes</h2>
+    <input type="text" placeholder="Search for Recipes" id="input">
+</body>
+</html>
+<script type="module">
+     import navbar from "./components/navbar.js"
+    document.getElementById("navbar").innerHTML = navbar()
+
+    let  getItems = async ()=>{
+       try{
+        let item = document.getElementById("input").value
+        let  res = await fetch("www.themealdb.com/api/json/v1/1/search.php?s=fish")
+        let  data = await res.json();
+        console.log(data)
+
+       }catch(err){
+        //    console.log(err);
+       }
+    }
+    getItems()
+    
+</script>

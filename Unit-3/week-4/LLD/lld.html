@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    class Vehicle{
+        constructor(type,regNumber,color){
+            this._type = type;
+            this._regNumber = regNumber;
+            this._color = color;
+        }
+
+        get type(){
+            return this._type
+        }
+
+        set type(value){
+            this._type = value
+        }
+    }
+
+    class Car extends Vehicle{
+        constructor(regNumber,color){
+            super("Car",regNumber,color)
+        }
+    }
+
+    class Bike extends Vehicle{
+        constructor(regNumber,color){
+            super("Bike",regNumber,color)
+        }
+    }
+
+    class Truck extends Vehicle{
+        constructor(regNumber,color){
+            super("Truck",regNumber,color)
+        }
+    }
+
+    let c1 = new Car("AP16 GH 9087","Black")
+    console.log('c1:', c1)
+
+
+    // Individual Parking Slot
+    class Slot{
+        constructor(type, number){
+            this.type = type;
+            this.number = number;
+            this._isBooked = false
+        }
+
+        get isBooked(){
+            return this._isBooked 
+        }
+
+        set isBookes(value){
+            this._isBooked= value
+        }
+    }
+
+
+    // Individual Parking Floor
+
+    class ParkingFloor{
+        constructor(floorNumber, maxFloor){
+            this.floorNumber = floorNumber
+            this._parkingSlot = []
+
+             // We categorized each floor
+            for(let i=0; i<maxFloor; i++){
+                if(i===0){
+                    this._parkingSlot.push(new Slot("Truck",i))
+                }else if(i ===1){
+                    this._parkingSlot.push(new Slot("Car",i))
+                }else{
+                    this._parkingSlot.push(new Slot("Bike",i))
+                }
+            }
+        }
+            get parkingSlot(){
+               return  this._parkingSlot
+            }
+
+           
+        
+    }
+
+    let pf1 = new ParkingFloor(2,3)
+    console.log('pf1:', pf1)
+
+    class ParkingLot{
+        constructor(number){
+            this._floor = []
+            this._numberOfFloors = number;
+
+            for(let i=0; i<number; i++){
+                this._floor[i] = new ParkingFloor(i,number);
+            }
+        }
+
+        get numberOfFloors(){
+            return this._numberOfFloors 
+        }
+        get floor(){
+            return this._floor
+        }
+        set floor(value){
+            this._floor = value
+        }
+
+
+        findSlot(type){
+                for(let i=0; i<this._numberOfFloors; i++){
+                    for(let slot of this._floor[i]._parkingSlot){
+                        
+                        if(slot.type === type && !slot._isBooked){
+                            console.log(slot);
+                            return {floorNumber:i,slot:slot}
+                        }
+                    }
+                }
+               return false 
+            }
+
+            bookslot(slot){
+                slot.slot._isBooked = true;
+                console.log("slot is booked :",slot);
+                return true
+            }
+
+            parkVehicle(vehicle){
+                let slot = this.findSlot(vehicle.type)
+                if(!slot){
+                    console.log("No Slots");
+                    return false
+                }
+
+                this.bookslot(slot)
+                let ticket =  new Ticket(slot.floorNumber, slot.slot.number)
+                console.log("Ticked is Issued :", ticket);
+            }
+    }
+
+    class Ticket{
+        constructor(floorNumber,slotNumber){
+            this.floorNumber = floorNumber
+            this.slotNumber = slotNumber
+
+            this.issuedAt = new Date()
+        }
+    }
+
+    let p1 = new ParkingLot(3)
+    console.log('p1:', p1)
+
+   console.log( p1.findSlot("Car"))
+
+   let b1 = new Bike("AP 12-1234","red")
+   p1.parkVehicle(b1)
+
+
+
+
+</script>

@@ -1,0 +1,31 @@
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 20px 10px;
+    border: 1px solid;
+    width: 90%;
+    margin: auto;
+}
+#types{
+    display: flex;
+    align-items: center;
+    
+}
+#types>div{
+    margin-right: 30px;
+}
+h1{
+    text-align: center;
+    margin-bottom: 40px;
+}
+#input{
+    display: block;
+    height: 30px;
+    width: 30%;
+    margin: auto;
+}
+#findRes{
+    text-align: center;
+}
